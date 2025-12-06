@@ -1,23 +1,16 @@
-class UserRole{
-  constructor(name,role){
-    this.name = name;
-    this.role = role
+let pr = new Promise(function(res,rej){
+  let rn = Math.floor(Math.random()*10);
+  if(rn >5){
+    return res("resolved" + rn);
+  }else{
+    return rej("reject" + rn)
   }
-  CreateUser(){
-    console.log("user created");
-    
-  }
-}
+})
 
-class AdminRole extends UserRole{
-  constructor(name,role){
-super(name,role)
-  }
-  RemoveUser(){
-    console.log("Remove user");
-    
-  }
-}
-
-let u1 = new UserRole("mishkat","developer");
-let a1 = new AdminRole("jamal","football");
+pr.then(function(val){
+  console.log(val);
+  
+}).catch(function(val){
+  console.log(val);
+  
+})
