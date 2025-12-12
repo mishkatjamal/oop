@@ -1,145 +1,133 @@
-// ## Exercise 1 — Very Easy (Warming up)
 
-// **Task (Hindi):** Ek function banao `afterDelay`
+// # Day 63 — Project Scenarios
 
-// **Requirements:**
-// - Ye function do cheezein lega:
-//   1. `time` (milliseconds)
-//   2. `callback` function
-// - Given `time` ke baad `callback` call kare
-// - Callback ke andar `"Callback executed"` print hona chahiye
+// API example (OpenWeatherMap):
 
-// **Use case:**
-// > “2 second baad ek kaam karna hai”
-
-// **Goal:**
-// - Samajhna ki callback delay ke baad kaise execute hota hai
-// - Ye `setTimeout` + callback connection hai
+// `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
 
 // ---
 
-// ^ ans :-
-// function afterDelay(time ,cb){
-//     console.log("data fetch hora hai sabr kr...");
-    
-//     setTimeout(()=>{
-//         cb();
-//     },time)
-// }
+// ## Scenario 1 — Weather Dashboard with Error Handling
 
-// afterDelay(3000,function(){
-//     console.log("time ho gya cla do ");
-    
-// })
+// Build a small weather dashboard that fetches current weather data from a public weather API (e.g., OpenWeatherMap).
 
-// ## Exercise 2 — Intermediate (Data flow)
+// ### Requirements
 
-// **Task (Hindi):** Ek function banao `getUser`
+// - Make the API request asynchronously using `fetch` with `async/await`.
+// - Handle API request failures (for example, invalid city name) using `try/catch`.
+// - Create and throw custom errors based on weather conditions (e.g., extremely high or low temperature) and handle them appropriately.
 
-// **Requirements:**
-// - `getUser` `username` lega
-// - 1 second ke baad `callback` ko ek object de:
-//   - `id`
-//   - `username`
+// ### Suggested tasks
 
-// **Then:**
-// - Callback ke andar ek aur function call karo `getUserPosts`
-
-// **`getUserPosts` requirements:**
-// - `userId` lega
-// - 1 second ke baad `callback` ko `posts` ka array de
-
-// **Final output:**
-// - User ka `username` print ho
-// - Fir uske `posts` print ho
-
-// **Goal:**
-// - Samajhna ki ek async ka result next async ko kaise milta hai
-// - Callback chaining practice
+// - Build a simple UI to input a city name and display the result.
+// - Show user-friendly error messages for network errors, invalid input, or API errors.
+// - Demonstrate at least one custom thrown error (e.g., `ExtremeTemperatureError`) and handle it in the UI.
 
 // ---
-// ^ans :-
-// function getUser(username,cb){
-//     console.log("get user data fetching ...");
-    
-// setTimeout(()=>{
-//     cb({id:1234,username:"mishkat"})
-// },1000)
-// }
-// function getUserPosts(userId,cb){
-// setTimeout(() => {
-//     cb(["post1","post2","post3"])
-// }, 1000);
-// }
-// getUser("mishkat",function(user){
-//     console.log(user.username);
-//     getUserPosts(user,function(post){
-//         console.log(post);
-        
-//     })
-    
-// })
 
-// ## Exercise 3 — Intermediate (Callback dependency — thoda painful)
+// ## Scenario 2 — Bulk Email Sending Simulation with Parallel Promises and Error Handling
 
-// **Task (Hindi):** Teen functions banao:
+// Simulate sending bulk emails to 5 users. Treat each email-sending operation as a `Promise` (simulate delays with `setTimeout`).
 
-// 1. `loginUser`
-//    - 1 second baad callback ko `user` object de
-// 2. `fetchPermissions`
-//    - `userId` lega
-//    - 1 second baad callback ko `permissions` array de
-// 3. `loadDashboard`
-//    - `permissions` lega
-//    - 1 second baad callback ko `"Dashboard loaded"` bole
+// ### Requirements
 
-// **Flow:**
-// - Pehle `loginUser`
-// - Uske andar `fetchPermissions`
-// - Uske andar `loadDashboard`
-// - Final output console mein print ho
+// - Send all emails in parallel using `Promise.all`.
+// - If any email fails (e.g., due to a simulated random failure), catch the error and clearly indicate which specific email failed.
+// - Use a `finally` block to display a message indicating that the "Email process is complete." (regardless of success/failure).
 
-// **Goal:**
-// - Callback nesting ko feel karna
-// - Yehi structure baad mein callback hell banta hai
+// ### Suggested tasks
+
+// - Create an array of 5 mock email tasks that resolve or reject based on a random condition.
+// - Call `Promise.all` and handle success and failure cases. Show a breakdown of which emails succeeded and which failed.
+// - Ensure the `finally` block runs to update the UI or console indicating completion.
 
 // ---
-// ^ ans :-
-function loginUser(cb){
-    console.log("login user data fetching...");
+
+// Optional: combine both scenarios into a small dashboard that fetches weather and then attempts to send a report-email, demonstrating error handling across both network and simulated async operations.
+// # Day 63 — Project Scenarios
+
+// API example (OpenWeatherMap):
+
+// `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
+
+// ---
+
+// ## Scenario 1 — Weather Dashboard with Error Handling
+
+// Build a small weather dashboard that fetches current weather data from a public weather API (e.g., OpenWeatherMap).
+
+// ### Requirements
+
+// - Make the API request asynchronously using `fetch` with `async/await`.
+// - Handle API request failures (for example, invalid city name) using `try/catch`.
+// - Create and throw custom errors based on weather conditions (e.g., extremely high or low temperature) and handle them appropriately.
+
+// ### Suggested tasks
+
+// - Build a simple UI to input a city name and display the result.
+// - Show user-friendly error messages for network errors, invalid input, or API errors.
+// - Demonstrate at least one custom thrown error (e.g., `ExtremeTemperatureError`) and handle it in the UI.
+
+// ---
+
+// ## Scenario 2 — Bulk Email Sending Simulation with Parallel Promises and Error Handling
+
+// Simulate sending bulk emails to 5 users. Treat each email-sending operation as a `Promise` (simulate delays with `setTimeout`).
+
+// ### Requirements
+
+// - Send all emails in parallel using `Promise.all`.
+// - If any email fails (e.g., due to a simulated random failure), catch the error and clearly indicate which specific email failed.
+// - Use a `finally` block to display a message indicating that the "Email process is complete." (regardless of success/failure).
+
+// ### Suggested tasks
+
+// - Create an array of 5 mock email tasks that resolve or reject based on a random condition.
+// - Call `Promise.all` and handle success and failure cases. Show a breakdown of which emails succeeded and which failed.
+// - Ensure the `finally` block runs to update the UI or console indicating completion.
+
+// ---
+
+// Optional: combine both scenarios into a small dashboard that fetches weather and then attempts to send a report-email, demonstrating error handling across both network and simulated async operations.
+// Displaying Day 63 Question sheet.md.
+
+// ^ ans :- 
+let users = [
+    "mishkat@gmail.com",
+    "SF@gmail.com",
+    "mishDFSFSkat@gmail.com",
+    "VXZV@gmail.com",
+    "dfd@gmail.com",
+]
+
+function sendEmail(){
+    return new Promise((res,rej)=>{
+        let time = Math.floor(Math.random()*5);
     
     setTimeout(() => {
-        cb({username:"mishkat",id:123})
-    }, 1000);
-}
-
-function fetchPermissions(userId,cb){
-    console.log(userId);
-    setTimeout(() => {
-        cb(["permisson","permission2","permission3"]);
-    }, 1000);
-}
-
-function loadDashboard(permisson,cb){
-    console.log(permisson);
-   setTimeout(() => {
-     cb("dashboard loaded")
-   }, 1000);
-    
-    
-}
-
-
-loginUser(function(user){
-    console.log(user.username);
-    fetchPermissions(user.id,function(permisson){
-        
-        loadDashboard(permisson,function(msg){
-            console.log(msg);
-            
-        })
+        let possibility = Math.floor(Math.random()*10);
+        if (possibility>5) {
+            return res("ho gya hai dost")
+        } else {
+            return rej("nahi hua dost")
+        }
+    }, time*1000);
     })
+}
+
+function sendEmails(userlist){
+    let allresponse = userlist.map((email)=>{
+        return sendEmail(email).then(function(data){
+    console.log(data);
+
+}).catch(function(err){
+console.log(err);
+
 })
 
-// ### Notes
-// - Practice in plain JavaScript using `setTimeout` and callbacks to understand the flow before converting to Promises/async–await.
+
+    })
+    console.log(allresponse);
+}
+
+sendEmails(users);
