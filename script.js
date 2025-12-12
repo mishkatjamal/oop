@@ -100,34 +100,34 @@ let users = [
     "dfd@gmail.com",
 ]
 
+
 function sendEmail(){
     return new Promise((res,rej)=>{
         let time = Math.floor(Math.random()*5);
-    
-    setTimeout(() => {
-        let possibility = Math.floor(Math.random()*10);
-        if (possibility>5) {
-            return res("ho gya hai dost")
-        } else {
-            return rej("nahi hua dost")
-        }
-    }, time*1000);
+
+        setTimeout(() => {
+            let possibility = Math.floor(Math.random()*10);
+            if (possibility<5) {
+                return res("email gya bhai")
+            } else {
+                 return rej("email nahi gya bhai")
+            }
+        }, time*1000);
     })
 }
 
 function sendEmails(userlist){
-    let allresponse = userlist.map((email)=>{
-        return sendEmail(email).then(function(data){
-    console.log(data);
-
-}).catch(function(err){
-console.log(err);
-
-})
-
-
+    let allresponse = userlist.map((email,ind)=>{
+        return sendEmail(email,ind).then((data)=>{
+            console.log(data,ind);
+            
+        }).catch((err)=>{
+            console.log(err,ind);
+            
+        })
     })
-    console.log(allresponse);
+    console.log(userlist);
+    
 }
+sendEmails(users)
 
-sendEmails(users);
