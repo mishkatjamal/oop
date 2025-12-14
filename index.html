@@ -3,11 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-icon active">☀</div>
+            <div class="sidebar-icon">📊</div>
+            <div class="sidebar-icon">🌡</div>
+            <div class="sidebar-icon">📍</div>
+            <div class="sidebar-icon">⚙</div>
+            <div class="sidebar-icon">🔔</div>
+            <div class="user-avatar"></div>
+        </div>
 
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Current Weather -->
+            <div class="current-weather">
+                <div class="weather-header">
+                    <span style="color: rgba(255,255,255,0.7); font-size: 13px;">Visibility</span>
+                    <span style="color: rgba(255,255,255,0.7); font-size: 13px;">🔍</span>
+                </div>
+                <div class="weather-icon-large">🌤</div>
+                <div class="temperature"></div>
+                <div class="weather-description">
+                    <span>☁</span>
+                    <span class="mausam"></span>
+                </div>
+                <div class="location-info">
+                    <div class="location-item country-wala"> Poole, UK</div>
+                    <div class="location-item">📅 24 Jan 2022, 8:38 AM</div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Humidity</h3>
+                        <div class="stat-value sat-humi"><span class="stat-unit">%</span></div>
+                        <div class="stat-info">The dew point is 26° right now.</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Visibility</h3>
+                        <div class="stat-value sat-val-hu"><span class="stat-unit"></span></div>
+                        <div class="stat-info">Haze is affecting visibility</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Feels Like</h3>
+                        <div class="stat-value sat-val-feels"></div>
+                        <div class="stat-info">Humidity is making it feel cooler</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Wind Status</h3>
+                        <div class="stat-value sat-wind-speed"><span class="stat-unit">km/h</span></div>
+                        <div class="wind-chart"></div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>UV Index</h3>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div class="uv-gauge">
+                                <span style="position: relative; z-index: 1; color: #fff; font-size: 20px;">5.50</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Sunrise & Sunset</h3>
+                        <div class="sunrise-chart"></div>
+                        <div class="time-markers">
+                            <span class="time-marker">5:00 AM</span>
+                            <span class="time-marker">6:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Right Info Cards -->
+            <div class="top-cards">
+                <div class="info-card" style="grid-column: span 2;">
+                    <h3>Today's Highlight</h3>
+                </div>
+                <div class="info-card">
+                    <h3>Wind Status</h3>
+                    <div class="card-content">
+                        <div class="stat-value satmain-wind">7.90 <span class="stat-unit" style="font-size: 14px;">km/h</span></div>
+                        <div class="wind-chart"></div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>UV Index</h3>
+                    <div class="card-content" style="align-items: center;">
+                        <div class="uv-gauge">
+                            <span style="position: relative; z-index: 1; color: #fff; font-size: 24px;">5.50</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card" style="grid-column: span 2;">
+                    <h3>Sunrise & Sunset</h3>
+                    <div class="card-content">
+                        <div class="sunrise-chart"></div>
+                        <div class="time-markers">
+                            <span class="time-marker">5:00 AM</span>
+                            <span class="time-marker">6:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 Days Forecast -->
+            <div class="forecast-section">
+                <div class="section-header">
+                    <h2>7 days Forecast</h2>
+                    <div class="dropdown">7 day ▼</div>
+                </div>
+                <div class="forecast-list">
+                    <div class="forecast-item">
+                        <div class="forecast-icon">🌧</div>
+                        <div>
+                            <div class="forecast-temp">+29°/<span class="forecast-temp-low">+18</span></div>
+                        </div>
+                        <div class="forecast-precip">💧 75 Uv</div>
+                        <div class="forecast-graph"></div>
+                        <div class="forecast-day">Today</div>
+                    </div>
+                    <div class="forecast-item">
+                        <div class="forecast-icon">⛈</div>
+                        <div>
+                            <div class="forecast-temp">+21°/<span class="forecast-temp-low">+15</span></div>
+                        </div>
+                        <div class="forecast-precip">💧 76 Uv</div>
+                        <div class="forecast-graph"></div>
+                        <div class="forecast-day">Wednesday</div>
+                    </div>
+                    <div class="forecast-item">
+                        <div class="forecast-icon">🌧</div>
+                        <div>
+                            <div class="forecast-temp">+24°/<span class="forecast-temp-low">+20</span></div>
+                        </div>
+                        <div class="forecast-precip">💧 77 Uv</div>
+                        <div class="forecast-graph"></div>
+                        <div class="forecast-day">Thursday</div>
+                    </div>
+                    <div class="forecast-item">
+                        <div class="forecast-icon">❄</div>
+                        <div>
+                            <div class="forecast-temp">+30°/<span class="forecast-temp-low">+17</span></div>
+                        </div>
+                        <div class="forecast-precip">💧 88 Uv</div>
+                        <div class="forecast-graph"></div>
+                        <div class="forecast-day">Friday</div>
+                    </div>
+                    <div class="forecast-item" style="background: rgba(255, 255, 255, 0.08);">
+                        <div class="forecast-icon">⛅</div>
+                        <div>
+                            <div class="forecast-temp">23°</div>
+                            <div style="color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 5px;">Partly cloudy day</div>
+                        </div>
+                        <div></div>
+                        <div class="forecast-graph"></div>
+                        <div class="forecast-day">Today</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather Map -->
+            <div class="weather-map">
+                <div class="section-header">
+                    <h2>Weather condition map</h2>
+                    <div class="dropdown">29 km ▼</div>
+                </div>
+                <div class="map-container">
+                    <div class="map-overlay"></div>
+                    <div class="map-marker" style="top: 20%; left: 20%;">
+                        <div>🌧</div>
+                        <div class="map-temp">Calameda</div>
+                    </div>
+                    <div class="map-marker center">
+                        <div style="font-size: 40px;">🌧</div>
+                        <div class="map-temp" style="font-size: 24px;">21°</div>
+                        <div style="font-size: 11px; color: rgba(255,255,255,0.6);">Rainy - Poole UK</div>
+                    </div>
+                    <div class="map-marker" style="top: 20%; right: 20%;">
+                        <div>🌧</div>
+                        <div class="map-temp">Other</div>
+                    </div>
+                    <div class="map-marker" style="bottom: 20%; left: 25%;">
+                        <div>⛅</div>
+                        <div class="map-temp">Open</div>
+                    </div>
+                    <div class="map-marker" style="bottom: 20%; right: 25%;">
+                        <div>🌧</div>
+                        <div class="map-temp">Another</div>
+                    </div>
+                    
+                    <div class="map-controls">
+                        <div class="map-control-btn">+</div>
+                        <div class="map-control-btn">⊙</div>
+                        <div class="map-control-btn">☰</div>
+                        <div class="map-control-btn">⚙</div>
+                    </div>
+                    
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: linear-gradient(to right, #4ade80, #22d3ee, #3b82f6);"></div>
+                            <span>Precipitation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
